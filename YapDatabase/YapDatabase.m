@@ -2742,7 +2742,7 @@ NSString *const YapDatabaseNotificationKey           = @"notification";
 				for (YapDatabaseConnectionState *state in strongSelf->connectionStates)
 				{
 					if (state->longLivedReadTransaction &&
-					    state->lastKnownSnapshot == strongSelf->snapshot)
+					    state->lastTransactionSnapshot == strongSelf->snapshot)
 					{
 						[state->connection maybeResetLongLivedReadTransaction];
 					}
