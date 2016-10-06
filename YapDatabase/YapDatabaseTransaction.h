@@ -350,6 +350,18 @@ NS_ASSUME_NONNULL_BEGIN
                        withFilter:(nullable BOOL (^)(NSString *key))filter;
 
 /**
+ * Fast enumeration over rows in the database for which you're interested in.
+ * The filter block allows you to decide which rows you're interested in.
+ *
+ * From the filter block, simply return YES if you'd like the block handler to be invoked for the given key.
+ * If the filter block returns NO, then the block handler is skipped for the given key,
+ * which avoids the cost associated with deserializing the object & metadata.
+ **/
+- (void)hpy_enumerateRowsInCollection:(nullable NSString *)collection
+                           usingBlock:(void (^)(int64_t rowid, NSString *key, id object, __nullable id metadata, BOOL *stop))block
+                           withFilter:(nullable BOOL (^)(int64_t rowid, NSString *key))filter;
+
+/**
  * Enumerates all rows in all collections.
  * 
  * The enumeration is sorted by collection. That is, it will enumerate fully over a single collection
