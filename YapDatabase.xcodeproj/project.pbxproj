@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		007B05211B8BE333009F9556 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B05201B8BE333009F9556 /* CocoaLumberjack.framework */; };
+		00C4C50E1DC187EE00A48648 /* vfs_shim.c in Sources */ = {isa = PBXBuildFile; fileRef = 00C4C50C1DC187EE00A48648 /* vfs_shim.c */; };
 		452D9BBC1B10668800A93068 /* YapDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 452D9BBB1B10668800A93068 /* YapDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		452D9BD91B1066D900A93068 /* YapDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 452D9BD21B1066D900A93068 /* YapDatabase.m */; };
 		452D9BDA1B1066D900A93068 /* YapDatabaseConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 452D9BD31B1066D900A93068 /* YapDatabaseConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -198,6 +199,8 @@
 
 /* Begin PBXFileReference section */
 		007B05201B8BE333009F9556 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../../Users/bencaudle/Library/Developer/Xcode/DerivedData/Inspector-cqmgwcmzgtuugndbqosfyrsrjhqu/Build/Products/Debug-iphoneos/CocoaLumberjack.framework"; sourceTree = "<group>"; };
+		00864C021DC2ACBA00D63B64 /* vfs_shim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vfs_shim.h; sourceTree = "<group>"; };
+		00C4C50C1DC187EE00A48648 /* vfs_shim.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vfs_shim.c; sourceTree = "<group>"; };
 		452D9BB61B10668800A93068 /* YapDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YapDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		452D9BBA1B10668800A93068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		452D9BBB1B10668800A93068 /* YapDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YapDatabase.h; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 				452D9BD71B1066D900A93068 /* YapDatabaseTransaction.h */,
 				452D9BD81B1066D900A93068 /* YapDatabaseTransaction.m */,
 				452D9BB91B10668800A93068 /* Supporting Files */,
+				00C4C50C1DC187EE00A48648 /* vfs_shim.c */,
+				00864C021DC2ACBA00D63B64 /* vfs_shim.h */,
 			);
 			path = YapDatabase;
 			sourceTree = "<group>";
@@ -990,6 +995,7 @@
 				452D9CDA1B1066FC00A93068 /* YapDatabaseExtension.m in Sources */,
 				452D9D361B1066FC00A93068 /* YapTouch.m in Sources */,
 				452D9CFA1B1066FC00A93068 /* YapDatabaseSecondaryIndex.m in Sources */,
+				00C4C50E1DC187EE00A48648 /* vfs_shim.c in Sources */,
 				452D9D421B1066FC00A93068 /* YapWhitelistBlacklist.m in Sources */,
 				452D9CBC1B1066FC00A93068 /* YapDatabaseCloudKitTypes.m in Sources */,
 				452D9CF51B1066FC00A93068 /* YapDatabaseSearchResultsViewOptions.m in Sources */,

@@ -73,8 +73,12 @@
 	if (status != SQLITE_DONE)
 	{
 		YDBLogError(@"Couldn't begin transaction: %d %s", status, sqlite3_errmsg(connection->db));
+
+        if (status == SQLITE_FULL) {
+            [NSException raise:@"YapDatabase" format:@"Couldn't begin transaction: %d %s", status, sqlite3_errmsg(connection->db)];
+        }
 	}
-	
+
 	sqlite3_reset(statement);
 }
 
@@ -147,6 +151,10 @@
 		if (status != SQLITE_DONE)
 		{
 			YDBLogError(@"Couldn't commit transaction: %d %s", status, sqlite3_errmsg(connection->db));
+
+            if (status == SQLITE_FULL) {
+                [NSException raise:@"YapDatabase" format:@"Couldn't commit transaction: %d %s", status, sqlite3_errmsg(connection->db)];
+            }
 		}
 		
 		sqlite3_reset(statement);
@@ -172,6 +180,10 @@
 		if (status != SQLITE_DONE)
 		{
 			YDBLogError(@"Couldn't rollback transaction: %d %s", status, sqlite3_errmsg(connection->db));
+
+            if (status == SQLITE_FULL) {
+                [NSException raise:@"YapDatabase" format:@"Couldn't rollback transaction: %d %s", status, sqlite3_errmsg(connection->db)];
+            }
 		}
 		
 		sqlite3_reset(statement);

@@ -9,6 +9,10 @@
 
 #import "sqlite3.h"
 
+#ifdef HPY_SQLITE_VFS_SHIM
+#import "vfs_shim.h"
+#endif //HPY_SQLITE_VFS_SHIM
+
 #import <mach/mach_time.h>
 #import <libkern/OSAtomic.h>
 
@@ -616,14 +620,30 @@ NSString *const YapDatabaseNotificationKey           = @"notification";
 **/
 - (BOOL)openDatabase
 {
+    __block int status = SQLITE_OK;
+
+// Define this symbol when building to include a shim on SQLite's VFS that allows you to cause writes to the database to fail
+// simply by changing the value of a global variable (see vfs_shim.c for info)
+#ifdef HPY_SQLITE_VFS_SHIM
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        status = RegisterVFSShim();
+    });
+
+    if (status != SQLITE_OK) {
+        return NO;
+    }
+#endif //HPY_SQLITE_VFS_SHIM
+    
 	// Open the database connection.
 	//
 	// We use SQLITE_OPEN_NOMUTEX to use the multi-thread threading mode,
 	// as we will be serializing access to the connection externally.
-	
 	int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_NOMUTEX | SQLITE_OPEN_PRIVATECACHE;
 	
-	int status = sqlite3_open_v2([databasePath UTF8String], &db, flags, NULL);
+	status = sqlite3_open_v2([databasePath UTF8String], &db, flags, NULL);
+
 	if (status != SQLITE_OK)
 	{
 		// There are a few reasons why the database might not open.
@@ -640,7 +660,7 @@ NSString *const YapDatabaseNotificationKey           = @"notification";
 		
 		return NO;
 	}
-	
+
 	return YES;
 }
 
@@ -1266,6 +1286,10 @@ NSString *const YapDatabaseNotificationKey           = @"notification";
 	if (status != SQLITE_OK)
 	{
 		YDBLogError(@"Error in '%@': %d %s", THIS_METHOD, status, sqlite3_errmsg(db));
+
+        if (status == SQLITE_FULL) {
+            [NSException raise:@"YapDatabase" format:@"Couldn't commit transaction: %d %s", status, sqlite3_errmsg(db)];
+        }
 	}
 }
 
@@ -1275,6 +1299,10 @@ NSString *const YapDatabaseNotificationKey           = @"notification";
 	if (status != SQLITE_OK)
 	{
 		YDBLogError(@"Error in '%@': %d %s", THIS_METHOD, status, sqlite3_errmsg(db));
+
+        if (status == SQLITE_FULL) {
+            [NSException raise:@"YapDatabase" format:@"Couldn't commit transaction: %d %s", status, sqlite3_errmsg(db)];
+        }
 	}
 }
 
@@ -2681,6 +2709,11 @@ static BOOL const YDB_PRINT_WAL_SIZE = YES;
 			}
 			else {
 				YDBLogWarn(@"sqlite3_wal_checkpoint_v2 returned error code: %d", result);
+
+                if (result == SQLITE_FULL) {
+                    [NSException raise:@"YapDatabase" format:@"Couldn't commit transaction: %d %s", result, sqlite3_errmsg(strongSelf->db)];
+                }
+
 			}
 			
 			return;// from_block
