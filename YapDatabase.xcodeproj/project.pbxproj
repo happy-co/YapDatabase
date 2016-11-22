@@ -198,7 +198,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		007B05201B8BE333009F9556 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../../Users/bencaudle/Library/Developer/Xcode/DerivedData/Inspector-cqmgwcmzgtuugndbqosfyrsrjhqu/Build/Products/Debug-iphoneos/CocoaLumberjack.framework"; sourceTree = "<group>"; };
+		007B05201B8BE333009F9556 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		00864C021DC2ACBA00D63B64 /* vfs_shim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vfs_shim.h; sourceTree = "<group>"; };
 		00C4C50C1DC187EE00A48648 /* vfs_shim.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vfs_shim.c; sourceTree = "<group>"; };
 		452D9BB61B10668800A93068 /* YapDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YapDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1116,10 +1116,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Inspector-cqmgwcmzgtuugndbqosfyrsrjhqu/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = YapDatabase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1237,10 +1233,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Inspector-cqmgwcmzgtuugndbqosfyrsrjhqu/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = YapDatabase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1260,10 +1252,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Inspector-cqmgwcmzgtuugndbqosfyrsrjhqu/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = YapDatabase/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
