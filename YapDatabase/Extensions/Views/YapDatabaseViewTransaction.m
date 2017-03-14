@@ -1873,7 +1873,7 @@
 	//
 	// This block will be invoked repeatedly as we calculate the insertion index.
 	
-	NSComparisonResult (^compare)(NSUInteger) = ^NSComparisonResult (NSUInteger index){
+    NSComparisonResult (^compare)(NSUInteger) = ^NSComparisonResult (NSUInteger index){ @autoreleasepool {
 		
 		int64_t anotherRowid = 0;
 		
@@ -1951,7 +1951,7 @@
 			                      collectionKey.collection, collectionKey.key,        object,        metadata,
 			                            another.collection,       another.key, anotherObject, anotherMetadata);
 		}
-	};
+    }};
 	
 	NSComparisonResult cmp;
 	
