@@ -458,7 +458,7 @@ NSString *const YapDatabaseNotificationKey           = @"notification";
 					isNewDatabaseFile = YES;
 					result = openConfigCreate();
 					if (result) {
-						YDBLogInfo(@"Database corruption resolved. Renamed corrupt file. (newDB=%@) (corruptDB=%@)",
+						YDBLogWarn(@"Database corruption resolved. Renamed corrupt file. (newDB=%@) (corruptDB=%@)",
 						           [databasePath lastPathComponent], [newDatabasePath lastPathComponent]);
 					}
 					else {
@@ -479,7 +479,7 @@ NSString *const YapDatabaseNotificationKey           = @"notification";
 					isNewDatabaseFile = YES;
 					result = openConfigCreate();
 					if (result) {
-						YDBLogInfo(@"Database corruption resolved. Deleted corrupt file. (name=%@)",
+						YDBLogWarn(@"Database corruption resolved. Deleted corrupt file. (name=%@)",
 						                                                          [databasePath lastPathComponent]);
 					}
 					else {
